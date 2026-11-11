@@ -1,0 +1,388 @@
+.tanpa-loading-inline,
+.tanpa-processing-panel {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  border: 1px solid #eaecf0;
+  border-radius: 10px;
+  color: #475467;
+  background: #fcfcfd;
+  font-size: 12px;
+}
+
+.tanpa-processing-panel {
+  margin-top: 18px;
+  padding: 18px;
+  border-color: #f1bf9c;
+  background: #fffaf6;
+  color: #9a4c13;
+}
+
+.tanpa-processing-panel > svg {
+  flex: 0 0 auto;
+}
+
+.tanpa-processing-panel > div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.tanpa-processing-panel strong {
+  font-size: 12px;
+}
+
+.tanpa-processing-panel span,
+.tanpa-process-stage {
+  color: #667085;
+  font-size: 10px;
+  line-height: 1.8;
+}
+
+.tanpa-process-stage {
+  margin: 12px 0;
+}
+
+.tanpa-preview-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.without-formula-option input:disabled {
+  cursor: not-allowed;
+}
+
+.without-formula-option:has(input:disabled) {
+  opacity: .58;
+  cursor: not-allowed;
+}
+
+.tanpa-preview-summary > div {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+  padding: 13px;
+  border: 1px solid #eaecf0;
+  border-radius: 9px;
+  background: #fcfcfd;
+}
+
+.tanpa-preview-summary span {
+  color: #98a2b3;
+  font-size: 9px;
+}
+
+.tanpa-preview-summary strong {
+  overflow-wrap: anywhere;
+  color: #344054;
+  font-size: 13px;
+}
+
+.tanpa-code-preview {
+  margin-bottom: 18px;
+  padding: 15px;
+  border: 1px solid #eaecf0;
+  border-radius: 10px;
+  background: #fff;
+}
+
+.tanpa-preview-heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.tanpa-preview-heading strong {
+  color: #344054;
+  font-size: 11px;
+}
+
+.tanpa-preview-heading span {
+  color: #98a2b3;
+  font-size: 9px;
+}
+
+.tanpa-code-table-wrap {
+  overflow-x: auto;
+}
+
+.tanpa-code-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.tanpa-code-table th {
+  padding: 9px 10px;
+  border-bottom: 1px solid #eaecf0;
+  color: #98a2b3;
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .4px;
+}
+
+.tanpa-code-table td {
+  padding: 10px;
+  border-bottom: 1px solid #f2f4f7;
+  color: #475467;
+  font-size: 10px;
+}
+
+.tanpa-code-table tr:last-child td {
+  border-bottom: 0;
+}
+
+.tanpa-status-mapped,
+.tanpa-status-unmapped,
+.tanpa-status-neutral {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 7px;
+  border-radius: 999px;
+  font-size: 9px;
+  font-weight: 600;
+}
+
+.tanpa-status-mapped {
+  color: #16834a;
+  background: #edf8f0;
+}
+
+.tanpa-status-unmapped {
+  color: #b54708;
+  background: #fff4e5;
+}
+
+.tanpa-status-neutral {
+  color: #667085;
+  background: #f2f4f7;
+}
+
+.tanpa-unmapped-warning {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-top: 13px;
+  padding: 12px;
+  border: 1px solid #f4d7a7;
+  border-radius: 8px;
+  background: #fffbf2;
+  color: #a15c07;
+}
+
+.tanpa-unmapped-warning > svg {
+  flex: 0 0 auto;
+  margin-top: 1px;
+}
+
+.tanpa-unmapped-warning strong {
+  display: block;
+  font-size: 10px;
+}
+
+.tanpa-unmapped-warning p {
+  margin: 5px 0 0;
+  color: #8b704b;
+  font-size: 9px;
+  line-height: 1.8;
+}
+
+.tanpa-process-actions {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.tanpa-process-actions .without-formula-review-note {
+  flex: 1;
+  margin: 0;
+}
+
+.tanpa-process-actions > button {
+  flex: 0 0 auto;
+}
+
+.tanpa-result-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  margin-top: 18px;
+  padding: 17px;
+  border: 1px solid #d8ebdd;
+  border-radius: 11px;
+  background: #f7fcf8;
+}
+
+.tanpa-result-panel > div {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: #16834a;
+}
+
+.tanpa-result-panel > div strong {
+  color: #246b3d;
+  font-size: 12px;
+}
+
+.tanpa-result-panel p {
+  margin: 0;
+  color: #667085;
+  font-size: 10px;
+}
+
+.tanpa-result-panel > span {
+  overflow-wrap: anywhere;
+  font-size: 10px;
+  line-height: 1.6;
+}
+
+.tanpa-result-panel > span.success {
+  color: #16834a;
+}
+
+.tanpa-result-panel > span.failed {
+  color: #b42318;
+}
+
+.spin {
+  animation: tanpa-spin 1.1s linear infinite;
+}
+
+@keyframes tanpa-spin {
+  to { transform: rotate(360deg); }
+}
+
+@media (max-width: 900px) {
+  .tanpa-preview-summary {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 650px) {
+  .tanpa-process-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+  .tanpa-process-actions > button {
+    width: 100%;
+  }
+  .tanpa-preview-summary {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.tanpa-history-panel {
+  margin-top: 18px;
+}
+
+.tanpa-history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.tanpa-history-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 13px;
+  border: 1px solid #eaecf0;
+  border-radius: 10px;
+  background: #fff;
+}
+
+.tanpa-history-status {
+  display: grid;
+  width: 32px;
+  height: 32px;
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: 9px;
+}
+
+.tanpa-history-status.success {
+  color: #16834a;
+  background: #edf8f0;
+}
+
+.tanpa-history-status.warning {
+  color: #b54708;
+  background: #fff4e5;
+}
+
+.tanpa-history-status.failed {
+  color: #b42318;
+  background: #fef3f2;
+}
+
+.tanpa-history-content {
+  display: flex;
+  min-width: 0;
+  flex: 1;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.tanpa-history-title {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.tanpa-history-title strong {
+  overflow-wrap: anywhere;
+  color: #344054;
+  font-size: 11px;
+}
+
+.tanpa-history-title span,
+.tanpa-history-content p {
+  color: #98a2b3;
+  font-size: 9px;
+}
+
+.tanpa-history-content p {
+  margin: 0;
+}
+
+.tanpa-history-output-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 3px;
+}
+
+.tanpa-history-output-list span {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  padding: 4px 7px;
+  border-radius: 6px;
+  font-size: 9px;
+}
+
+.tanpa-history-output-list span.success {
+  color: #16834a;
+  background: #edf8f0;
+}
+
+.tanpa-history-output-list span.failed {
+  color: #b42318;
+  background: #fef3f2;
+}
+
+@media (max-width: 760px) {
+  .tanpa-history-title {
+    flex-direction: column;
+    gap: 3px;
+  }
+}

@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+pandas>=3.0.6
+openpyxl
+python-multipart
+pytest
+
+# Microsoft Excel desktop automation (Windows only)
+xlwings==0.37.8; sys_platform == "win32"
