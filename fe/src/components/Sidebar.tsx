@@ -114,20 +114,20 @@ export default function Sidebar({
       </nav>
 
       <div className="sidebar-bottom">
-        <div className="sidebar-status-icon">
+        <div className={`sidebar-status-icon ${isBackendOnline ? 'online' : 'offline'}`}>
           <Activity size={17} />
         </div>
 
       <div className="sidebar-status-copy">
         <strong>
-          {isBackendOnline ? 'Backend aktif' : 'Backend belum terhubung'}
+          {isBackendOnline ? 'Backend aktif' : 'Backend terputus'}
         </strong>
         <span>
           {isBackendOnline ? 'API merespons dengan baik' : 'Periksa server lokal'}
         </span>
       </div>
 
-        <span className="sidebar-status-dot" />
+        <span className={`sidebar-status-dot ${isBackendOnline ? 'online' : 'offline'}`} />
       </div>
 
       <div className="sidebar-version">

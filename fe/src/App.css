@@ -196,6 +196,16 @@
   color: #667085;
 }
 
+.sidebar-status-icon.online {
+  background: #e6f4ea;
+  color: #28a745;
+}
+
+.sidebar-status-icon.offline {
+  background: #fcf1f1;
+  color: #dc3545;
+}
+
 .sidebar-status-copy {
   display: flex;
   min-width: 0;
@@ -215,7 +225,6 @@
   line-height: 1.5;
 }
 
-.sidebar-status-dot,
 .demo-dot,
 .mode-dot {
   flex-shrink: 0;
@@ -223,6 +232,21 @@
   height: 7px;
   border-radius: 50%;
   background: #f47721;
+}
+
+.sidebar-status-dot {
+  flex-shrink: 0;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+}
+
+.sidebar-status-dot.online {
+  background: #28a745;
+}
+
+.sidebar-status-dot.offline {
+  background: #dc3545;
 }
 
 .sidebar-version {
@@ -285,51 +309,34 @@
   gap: 12px;
 }
 
-.mode-label {
+.status-indicator {
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 8px 11px;
-  border: 1px solid #eaecf0;
+  padding: 8px 12px;
   border-radius: 999px;
-  color: #667085;
-  font-size: 10px;
-  white-space: nowrap;
+  background: #f9f9fb;
+  border: 1px solid #eaecf0;
 }
 
-.mode-dot {
-  width: 6px;
-  height: 6px;
-}
-
-.profile-avatar {
-  display: grid;
-  place-items: center;
-  flex-shrink: 0;
-  width: 36px;
-  height: 36px;
-  border: 1px solid #f9dfcc;
+.status-dot {
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
-  background: #fff2e8;
-  color: #d95f12;
-  font-size: 13px;
-  font-weight: 700;
 }
 
-.profile-meta {
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
+.status-dot.online {
+  background: #28a745;
 }
 
-.profile-meta strong {
+.status-dot.offline {
+  background: #dc3545;
+}
+
+.status-text {
   color: #344054;
   font-size: 11px;
-}
-
-.profile-meta span {
-  color: #98a2b3;
-  font-size: 10px;
+  font-weight: 500;
 }
 
 /* ==============================
@@ -2943,6 +2950,14 @@
   height: 7px;
   border-radius: 50%;
   background: #d97706;
+}
+
+.settings-system-dot.online {
+  background: #28a745;
+}
+
+.settings-system-dot.offline {
+  background: #dc3545;
 }
 
 .settings-system-card > strong {

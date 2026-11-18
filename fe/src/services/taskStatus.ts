@@ -8,6 +8,9 @@ export type AppTask = {
   message?: string
 }
 
+const HISTORY_STORAGE_KEY = 'fss-control-center:task-history'
+const MAX_HISTORY_ITEMS = 100
+
 type TaskHandle = {
   update: (stage: string) => void
   complete: (message?: string) => void
@@ -16,10 +19,44 @@ type TaskHandle = {
 
 let nextTaskId = 1
 let currentTasks: AppTask[] = []
+let taskHistory = readTaskHistory()
 const listeners = new Set<() => void>()
+
+function readTaskHistory(): AppTask[] {
+  try {
+    const stored = window.localStorage.getItem(HISTORY_STORAGE_KEY)
+    if (!stored) return []
+    const parsed: unknown = JSON.parse(stored)
+    if (!Array.isArray(parsed)) throw new Error('Format riwayat proses tidak valid.')
+    return parsed.filter((item): item is AppTask =>
+      item !== null &&
+      typeof item === 'object' &&
+      typeof item.id === 'number' &&
+      typeof item.feature === 'string' &&
+      typeof item.stage === 'string' &&
+      (item.status === 'completed' || item.status === 'failed') &&
+      typeof item.startedAt === 'number' &&
+      typeof item.endedAt === 'number',
+    ).slice(0, MAX_HISTORY_ITEMS)
+  } catch (error) {
+    console.error('Gagal membaca riwayat proses lokal.', error)
+    return []
+  }
+}
 
 function publish(next: AppTask[]) {
   currentTasks = next
+  listeners.forEach((listener) => listener())
+}
+
+function publishHistory(task: AppTask) {
+  taskHistory = [task, ...taskHistory.filter((item) => item.id !== task.id)]
+    .slice(0, MAX_HISTORY_ITEMS)
+  try {
+    window.localStorage.setItem(HISTORY_STORAGE_KEY, JSON.stringify(taskHistory))
+  } catch (error) {
+    console.error('Gagal menyimpan riwayat proses lokal.', error)
+  }
   listeners.forEach((listener) => listener())
 }
 
@@ -30,6 +67,10 @@ export function subscribeTaskStatus(listener: () => void) {
 
 export function getTaskStatusSnapshot() {
   return currentTasks
+}
+
+export function getTaskHistorySnapshot() {
+  return taskHistory
 }
 
 export function startAppTask(feature: string, stage: string): TaskHandle {
@@ -56,17 +97,21 @@ export function startAppTask(feature: string, stage: string): TaskHandle {
   const complete = (message = 'Proses selesai.') => {
     const existing = currentTasks.find((item) => item.id === id)
     if (!existing || existing.status !== 'running') return
+    const completedTask = { ...existing, status: 'completed' as const, endedAt: Date.now(), message }
     publish(currentTasks.map((item) => item.id === id
-      ? { ...item, status: 'completed', endedAt: Date.now(), message }
+      ? completedTask
       : item))
+    publishHistory(completedTask)
   }
 
   const fail = (message: string) => {
     const existing = currentTasks.find((item) => item.id === id)
     if (!existing || existing.status !== 'running') return
+    const failedTask = { ...existing, status: 'failed' as const, endedAt: Date.now(), message }
     publish(currentTasks.map((item) => item.id === id
-      ? { ...item, status: 'failed', endedAt: Date.now(), message }
+      ? failedTask
       : item))
+    publishHistory(failedTask)
   }
 
   return { update, complete, fail }

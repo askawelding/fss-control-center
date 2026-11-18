@@ -16,7 +16,7 @@ import wIconWhite from '../assets/w_icon_white.svg'
 
 type TargetSheet = 'DATE' | 'DATA'
 
-export default function SettingsPage() {
+export default function SettingsPage({ isBackendOnline }: { isBackendOnline: boolean }) {
   const [targetSheet, setTargetSheet] =
     useState<TargetSheet>('DATE')
 
@@ -242,12 +242,12 @@ export default function SettingsPage() {
             <div className="settings-system-top">
               <Server size={19} />
 
-              <span className="settings-system-dot" />
+              <span className={`settings-system-dot ${isBackendOnline ? 'online' : 'offline'}`} />
             </div>
 
             <strong>Backend lokal</strong>
 
-            <span>Belum terhubung</span>
+            <span>{isBackendOnline ? 'Terhubung' : 'Belum terhubung'}</span>
           </div>
 
           <div className="settings-system-card">

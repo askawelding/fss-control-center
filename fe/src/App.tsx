@@ -115,11 +115,6 @@ function DashboardPage({
             Pantau kesiapan aplikasi dan mulai pekerjaan FSS dari sini.
           </p>
         </div>
-
-        <div className="demo-badge">
-          <span className="demo-dot" />
-          Mode pengembangan
-        </div>
       </section>
 
       <section className="welcome-banner">
@@ -380,6 +375,7 @@ export default function App() {
         <Topbar 
           title={currentTitle}
           isSidebarVisible={isSidebarVisible}
+          isBackendOnline={isBackendOnline}
           onToggleSidebar={() =>
             setIsSidebarVisible((visible) => !visible)
           }
@@ -424,7 +420,7 @@ export default function App() {
         {visitedPages.has('update') && <div hidden={activePage !== 'update'}><UpdateSCHDataPage /></div>}
         {visitedPages.has('tanpa-rumus') && <div hidden={activePage !== 'tanpa-rumus'}><TanpaRumusPage /></div>}
         {visitedPages.has('history') && <div hidden={activePage !== 'history'}><HistoryPage /></div>}
-        {visitedPages.has('settings') && <div hidden={activePage !== 'settings'}><SettingsPage /></div>}
+        {visitedPages.has('settings') && <div hidden={activePage !== 'settings'}><SettingsPage isBackendOnline={isBackendOnline} /></div>}
         {visitedPages.has('about') && <div hidden={activePage !== 'about'}><AboutPage onNavigate={navigateToPage} /></div>}
         {(['dashboard', 'build', 'update', 'tanpa-rumus', 'history', 'settings', 'about'] as PageKey[]).includes(activePage) ? null : (
           <PlaceholderPage page={activePage as Exclude<PageKey, 'dashboard'>} onNavigate={navigateToPage} />

@@ -7,12 +7,14 @@ import {
 type TopbarProps = {
   title: string
   isSidebarVisible: boolean
+  isBackendOnline: boolean
   onToggleSidebar: () => void
 }
 
 export default function Topbar({
   title,
   isSidebarVisible,
+  isBackendOnline,
   onToggleSidebar,
 }: TopbarProps) {
   return (
@@ -50,16 +52,14 @@ export default function Topbar({
       </div>
 
       <div className="topbar-right">
-        <div className="mode-label">
-          <span className="mode-dot" />
-          <span>Mode pengembangan</span>
-        </div>
-
-        <div className="profile-avatar">G</div>
-
-        <div className="profile-meta">
-          <strong>Galih</strong>
-          <span>Developer</span>
+        <div className="status-indicator">
+          <span 
+            className={`status-dot ${isBackendOnline ? 'online' : 'offline'}`} 
+            title={isBackendOnline ? 'Backend Terhubung' : 'Backend Terputus'}
+          />
+          <span className="status-text">
+            {isBackendOnline ? 'Terhubung' : 'Terputus'}
+          </span>
         </div>
       </div>
     </header>
